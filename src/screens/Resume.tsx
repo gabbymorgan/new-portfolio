@@ -23,13 +23,8 @@ export class Resume extends Component<Props, State> {
           alignItems: "center",
         }}
       >
-        <a href={pdfFile} download="Gabriella Pelton Resume 2020">
-          <Button style={{ margin: "1rem" }}>Download PDF</Button>
-        </a>
         <div>
-          <Document file={pdfFile}>
-            <Page pageNumber={1} />
-          </Document>
+          <img src="https://res.cloudinary.com/dwa3bztx6/image/upload/v1634158372/Portfolio/Gabriella_Morgan_Resume_2021.png"/>
         </div>
       </div>
     );
