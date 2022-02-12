@@ -33,7 +33,7 @@ export class NavigationBar extends Component<Props, State> {
       <div>
         <Navbar color="none" dark expand="md">
           <Link to="/">
-            <NavbarBrand>Gabriella Pelton</NavbarBrand>
+            <NavbarBrand>Gabriella Morgan</NavbarBrand>
           </Link>
           <NavbarToggler onClick={this.toggle.bind(this)} />
           <Collapse isOpen={this.state.isOpen} navbar>

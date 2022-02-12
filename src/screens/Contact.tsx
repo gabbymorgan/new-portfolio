@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Row, Col, Form, Input, Button } from "reactstrap";
 import moment from "moment";
-import {animateScroll } from "react-scroll";
+import { animateScroll } from "react-scroll";
 // @ts-ignore
 import { Bounce } from "react-activity";
 import { sendMessage } from "../actions/contact";
@@ -36,14 +36,14 @@ export class Contact extends Component<Props, State> {
 
   setMessage(event: any) {
     this.setState({
-      message: event.target.value
+      message: event.target.value,
     });
   }
 
   submitMessage() {
     this.props.sendMessage(this.state.message);
     this.setState({
-      message: ""
+      message: "",
     });
   }
 
@@ -58,9 +58,9 @@ export class Contact extends Component<Props, State> {
     animateScroll.scrollToBottom({
       containerId: "messages_container",
       duration: smooth ? 2500 : 0,
-      delay: smooth ? 500 : 0
+      delay: smooth ? 500 : 0,
     });
-}
+  }
 
   render() {
     return (
@@ -70,14 +70,14 @@ export class Contact extends Component<Props, State> {
             display: "flex",
             height: "100%",
             flexDirection: "column",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <Row
             style={{
               display: "flex",
               flexFlow: "row wrap",
-              justifyContent: "center"
+              justifyContent: "center",
             }}
           >
             <Form onKeyDown={(e) => this.handleKey(e)}>
@@ -87,7 +87,7 @@ export class Contact extends Component<Props, State> {
                 name="message"
                 value={this.state.message}
                 placeholder="Hello, have a job."
-                onChange={e => this.setMessage(e)}
+                onChange={(e) => this.setMessage(e)}
               />
             </Form>
             <Button onClick={() => this.submitMessage()}>Holler</Button>
@@ -100,15 +100,18 @@ export class Contact extends Component<Props, State> {
                 email me at:
               </Row>
               <Row className="contact__line">
-                <a href="mailto:gabriellapelton@gmail.com">
-                  gabriellapelton@gmail.com
+                <a href="mailto:gabriellarosemorgan@gmail.com">
+                  gabriellarosemorgan@gmail.com
                 </a>
               </Row>
             </Col>
           </Row>
           <Row className="contact__row">
-            <Col className="contact__column contact__column--messages" id="messages_container">
-              {this.props.messages.map(message => {
+            <Col
+              className="contact__column contact__column--messages"
+              id="messages_container"
+            >
+              {this.props.messages.map((message) => {
                 return (
                   <Row className="contact__message" key={message._id}>
                     {moment(message.createdOn).format("YYYY/MM/DD hh:mm")}{" "}
@@ -116,7 +119,11 @@ export class Contact extends Component<Props, State> {
                   </Row>
                 );
               })}
-              {this.props.contactIsLoading ? (<Row><Bounce/></Row>) : null}
+              {this.props.contactIsLoading ? (
+                <Row>
+                  <Bounce />
+                </Row>
+              ) : null}
             </Col>
           </Row>
         </Col>
@@ -125,14 +132,13 @@ export class Contact extends Component<Props, State> {
   }
 }
 
-
 const mapStateToProps = (state: any) => ({
   messages: state.contact.messages,
-  contactIsLoading: state.contact.isLoading
+  contactIsLoading: state.contact.isLoading,
 });
 
 const mapDispatchToProps = {
-  sendMessage
+  sendMessage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact);
