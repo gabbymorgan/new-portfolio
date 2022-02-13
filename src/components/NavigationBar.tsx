@@ -32,11 +32,15 @@ export class NavigationBar extends Component<Props, State> {
     return (
       <div>
         <Navbar color="none" dark expand="md">
-          <Link to="/">
+          <Link to="/" onClick={() => this.toggle()}>
             <NavbarBrand>Gabriella Morgan</NavbarBrand>
           </Link>
-          <NavbarToggler onClick={this.toggle.bind(this)} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={() => this.toggle()} />
+          <Collapse
+            isOpen={this.state.isOpen}
+            navbar
+            onClick={() => this.toggle()}
+          >
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <Link to="/projects">

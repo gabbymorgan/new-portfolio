@@ -32,7 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "start-windows": "set \"GENERATE_SOURCEMAP=false\" && react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
