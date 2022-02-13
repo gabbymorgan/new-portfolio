@@ -22,24 +22,30 @@ export class NavigationBar extends Component<Props, State> {
     isOpen: false,
   };
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
+  public toggle(option?: boolean) {
+    if (option === true || option === false) {
+      this.setState({
+        isOpen: option,
+      });
+    } else {
+      this.setState({
+        isOpen: !this.state.isOpen,
+      });
+    }
   }
 
   render() {
     return (
       <div>
         <Navbar color="none" dark expand="md">
-          <Link to="/" onClick={() => this.toggle()}>
+          <Link to="/" onClick={() => this.toggle(false)}>
             <NavbarBrand>Gabriella Morgan</NavbarBrand>
           </Link>
           <NavbarToggler onClick={() => this.toggle()} />
           <Collapse
             isOpen={this.state.isOpen}
             navbar
-            onClick={() => this.toggle()}
+            onClick={() => this.toggle(false)}
           >
             <Nav className="mr-auto" navbar>
               <NavItem>
